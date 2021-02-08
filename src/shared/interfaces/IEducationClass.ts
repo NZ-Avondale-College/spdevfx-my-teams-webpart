@@ -1,3 +1,5 @@
+import { IEducationAssignment } from ".";
+
 export interface IEducationClass {
     id: string;
     displayName: string;
@@ -6,5 +8,6 @@ export interface IEducationClass {
     classCode: string;
     externalId: string;
     externalName: string;
+    assignments?: IEducationAssignment[];
   }
   

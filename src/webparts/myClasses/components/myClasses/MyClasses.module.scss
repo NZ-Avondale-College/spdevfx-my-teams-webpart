@@ -1,6 +1,6 @@
 @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
 
-.myTeams {
+.myClasses {
   .container {
     max-width: 700px;
     margin: 0 auto;
@@ -71,5 +71,17 @@
       vertical-align: top;
       display: inline-block;
     }
+  }
+
+  .badge {
+    background-color: $ms-color-themePrimary;
+    border-color: $ms-color-themePrimary;
+    border-radius: 4px;
+    color: $ms-color-white;
+    font-size: $ms-font-size-s;
+    font-weight: $ms-font-weight-semibold;
+    margin-left: 8px;
+    padding: 3px 6px;
+    text-align: center;
   }
 }

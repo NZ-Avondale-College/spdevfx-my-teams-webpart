@@ -43,7 +43,7 @@ export class MyClasses extends React.Component<IMyClassesProps, IMyClassesState>
     return (
       <FocusZone id="testId">
         <List
-          className={styles.myTeams}
+          className={styles.myClasses}
           items={this._myClasses}
           renderedWindowsAhead={4}
           onRenderCell={this._onRenderCell}
@@ -53,12 +53,12 @@ export class MyClasses extends React.Component<IMyClassesProps, IMyClassesState>
   }
 
   private _onRenderCell = (team: IEducationClass, index: number | undefined): JSX.Element => {
-
     return (
       <div>
         <a href="#" title='Click to open channel' onClick={this._openChannel.bind(this, team.id)}>
           <span>{team.displayName}</span>
         </a>
+        <span className={styles.badge}>{team.assignments.length} Assignments</span>
       </div>
     );
   }
@@ -78,25 +78,25 @@ export class MyClasses extends React.Component<IMyClassesProps, IMyClassesState>
     window.open(link, '_blank');
   }
 
-  private _getClasses = async (): Promise<IEducationClass[]> => {
-    let myClasses: IEducationClass[] = [];
-    try {
-      myClasses = await this.props.teamsService.GetClasses();
-      console.log(myClasses);
-    } catch (error) {
-      console.log('Error getting classes', error);
-    }
-    return myClasses;
-  }
-
   private _getTeamChannels = async (teamId): Promise<IChannel[]> => {
     let channels: IChannel[] = [];
     try {
       channels = await this.props.teamsService.GetTeamChannels(teamId);
-      console.log(channels);
+      console.log('Channels', channels);
     } catch (error) {
       console.log('Error getting channels for team ' + teamId, error);
     }
     return channels;
+  }
+
+  private _getClasses = async (): Promise<IEducationClass[]> => {
+    let myClasses: IEducationClass[] = [];
+    try {
+      myClasses = await this.props.teamsService.GetClasses();
+      console.log('Classes', myClasses);
+    } catch (error) {
+      console.log('Error getting classes', error);
+    }
+    return myClasses;
   }
 }

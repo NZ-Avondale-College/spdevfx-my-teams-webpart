@@ -1,5 +1,5 @@
 import { MSGraphClient } from "@microsoft/sp-http";
-import { ITeam, IChannel, IEducationClass } from "../interfaces";
+import { ITeam, IChannel, IEducationClass, IEducationAssignment } from "../interfaces";
 import { ITeamsService } from "./ITeamsService";
 
 export class TeamsService implements ITeamsService {
@@ -55,9 +55,27 @@ export class TeamsService implements ITeamsService {
     try {
       const classesResponse = await this._graphClient.api('education/me/classes').version('v1.0').get();
       classes = classesResponse.value as IEducationClass[];
+      for(var i = 0; i < classes.length; ++i) {
+        classes[i].assignments = await this._getAssignments(classes[i].id);
+      }
     } catch (error) {
       console.log('Error getting classes', error);
     }
     return classes;
+  }
+
+  public GetAssignments = async (teamId): Promise<IEducationAssignment[]> => {
+    return await this._getAssignments(teamId);
+  }
+
+  private _getAssignments = async (teamId): Promise<IEducationAssignment[]> => {
+    let assignments: IEducationAssignment[] = [];
+    try {
+      const assignmentsResponse = await this._graphClient.api(`education/classes/${teamId}/assignments`).version('beta').get();
+      assignments = assignmentsResponse.value as IEducationAssignment[];
+    } catch (error) {
+      console.log('Error getting assignments', error);
+    }
+    return assignments;
   }
 }

@@ -82,7 +82,7 @@ export class MyTeams extends React.Component<IMyTeamsProps, IMyTeamsState> {
     let myTeams: ITeam[] = [];
     try {
       myTeams = await this.props.teamsService.GetTeams();
-      console.log(myTeams);
+      console.log('Teams', myTeams);
     } catch (error) {
       console.log('Error getting teams', error);
     }
@@ -93,7 +93,7 @@ export class MyTeams extends React.Component<IMyTeamsProps, IMyTeamsState> {
     let channels: IChannel[] = [];
     try {
       channels = await this.props.teamsService.GetTeamChannels(teamId);
-      console.log(channels);
+      console.log('Channels', channels);
     } catch (error) {
       console.log('Error getting channels for team ' + teamId, error);
     }

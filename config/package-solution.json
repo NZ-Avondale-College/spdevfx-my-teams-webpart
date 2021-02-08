@@ -5,23 +5,16 @@
     "title": "Teams & Edu WebParts",
     "id": "04e1275d-fa96-4c58-9b84-3be6b61e3abe",
     "version": "1.0.0.0",
-    /*"developer": {
-      "name": "Anthony Munro",
-      "websiteUrl": "https://github.com/NZ-Avondale-College",
-      "privacyUrl": "",
-      "termsOfUseUrl": "",
-      "mpnId": ""
-    },*/
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "webApiPermissionRequests": [
       {
         "resource": "Microsoft Graph",
-        "scope": "User.Read"
+        "scope": "User.Read.All"
       },
       {
         "resource": "Microsoft Graph",
-        "scope": "Group.Read"
+        "scope": "Group.Read.All"
       },
       {
         "resource": "Microsoft Graph",
