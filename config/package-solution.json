@@ -1,8 +1,9 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "my-teams-client-side-solution",
-    "id": "9bf27890-01d8-4041-8030-72831ed570aa",
+    "name": "my-teams",
+    "title": "Teams WebParts",
+    "id": "04e1275d-fa96-4c58-9b84-3be6b61e3abe",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
