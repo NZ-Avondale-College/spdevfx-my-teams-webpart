@@ -23,6 +23,14 @@
       {
         "resource": "Microsoft Graph",
         "scope": "Group.ReadWrite.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "EduRoster.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "EduRoster.ReadWrite.All"
       }
     ]
   },

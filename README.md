@@ -1,8 +1,8 @@
-# My Teams
+# Teams WebParts
 
 ## Summary
 
-This sample uses Microsoft Graph to list the Teams the current user is a member of. When the user clicks on one of the teams, the web part retrieves information about the default channel (General) and opens it.
+This set of web parts uses Microsoft Graph to list the Teams the current user is a member of. When the user clicks on one of the teams, the web part retrieves information about the default channel (General) and opens it.
 The web part can be configured to open the team on the web browser or client app.
 
 ![Demo](./assets/Preview.png)
@@ -24,7 +24,7 @@ The web part can be configured to open the team on the web browser or client app
 
 | Solution       | Author(s)      |
 | -------------- | -------------- |
-| react-my-teams | Joel Rodrigues |
+| my-teams | Anthony Munro |
 
 ## Version history
 
