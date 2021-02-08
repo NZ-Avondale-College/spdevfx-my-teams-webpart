@@ -9,10 +9,21 @@
           "manifest": "./src/webparts/myTeams/MyTeamsWebPart.manifest.json"
         }
       ]
+    },
+    "my-classes-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/myClasses/MyClassesWebPart.js",
+          "manifest": "./src/webparts/myClasses/MyClassesWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "MyTeamsWebPartStrings": "lib/webparts/myTeams/loc/{locale}.js"
+    "MyTeamsWebPartStrings": "lib/webparts/myTeams/loc/{locale}.js",
+    "MyClassesWebPartStrings": "lib/webparts/myClasses/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
   }
 }

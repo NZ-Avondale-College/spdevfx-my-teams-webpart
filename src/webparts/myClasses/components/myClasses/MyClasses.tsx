@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { FocusZone } from '@microsoft/office-ui-fabric-react-bundle';
 import { List } from '@microsoft/office-ui-fabric-react-bundle';
-import styles from '../myTeams/MyTeams.module.scss';
-import { IMyTeamsProps, IMyTeamsState } from '.';
+import styles from '../myClasses/MyClasses.module.scss';
+import { IMyClassesProps, IMyClassesState } from '.';
 //import { escape } from '@microsoft/sp-lodash-subset';
-import { ITeam, IChannel } from '../../../../shared/interfaces';
+import { IChannel, IEducationClass } from '../../../../shared/interfaces';
 
-export class MyTeams extends React.Component<IMyTeamsProps, IMyTeamsState> {
+export class MyClasses extends React.Component<IMyClassesProps, IMyClassesState> {
 
-  private _myTeams: ITeam[] = [];
+  private _myClasses: IEducationClass[] = [];
 
-  constructor(props: IMyTeamsProps) {
+  constructor(props: IMyClassesProps) {
     super(props);
 
     this.state = {
@@ -22,7 +22,7 @@ export class MyTeams extends React.Component<IMyTeamsProps, IMyTeamsState> {
     await this._load();
   }
 
-  public async componentDidUpdate(prevProps: IMyTeamsProps) {
+  public async componentDidUpdate(prevProps: IMyClassesProps) {
     if (this.props.openInClientApp !== prevProps.openInClientApp) {
       await this._load();
     }
@@ -31,20 +31,20 @@ export class MyTeams extends React.Component<IMyTeamsProps, IMyTeamsState> {
   private _load = async (): Promise<void> => {
 
     // get teams
-    this._myTeams = await this._getTeams();
+    this._myClasses = await this._getClasses();
 
 
     this.setState({
-      items: this._myTeams,
+      items: this._myClasses,
     });
   }
 
-  public render(): React.ReactElement<IMyTeamsProps> {
+  public render(): React.ReactElement<IMyClassesProps> {
     return (
       <FocusZone id="testId">
         <List
           className={styles.myTeams}
-          items={this._myTeams}
+          items={this._myClasses}
           renderedWindowsAhead={4}
           onRenderCell={this._onRenderCell}
         />
@@ -52,7 +52,7 @@ export class MyTeams extends React.Component<IMyTeamsProps, IMyTeamsState> {
     );
   }
 
-  private _onRenderCell = (team: ITeam, index: number | undefined): JSX.Element => {
+  private _onRenderCell = (team: IEducationClass, index: number | undefined): JSX.Element => {
 
     return (
       <div>
@@ -78,15 +78,15 @@ export class MyTeams extends React.Component<IMyTeamsProps, IMyTeamsState> {
     window.open(link, '_blank');
   }
 
-  private _getTeams = async (): Promise<ITeam[]> => {
-    let myTeams: ITeam[] = [];
+  private _getClasses = async (): Promise<IEducationClass[]> => {
+    let myClasses: IEducationClass[] = [];
     try {
-      myTeams = await this.props.teamsService.GetTeams();
-      console.log(myTeams);
+      myClasses = await this.props.teamsService.GetClasses();
+      console.log(myClasses);
     } catch (error) {
-      console.log('Error getting teams', error);
+      console.log('Error getting classes', error);
     }
-    return myTeams;
+    return myClasses;
   }
 
   private _getTeamChannels = async (teamId): Promise<IChannel[]> => {

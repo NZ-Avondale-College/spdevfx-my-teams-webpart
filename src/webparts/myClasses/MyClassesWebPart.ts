@@ -7,16 +7,16 @@ import {
   PropertyPaneToggle
 } from '@microsoft/sp-webpart-base';
 
-import * as strings from 'MyTeamsWebPartStrings';
-import { MyTeams, IMyTeamsProps } from './components/myTeams';
+import * as strings from 'MyClassesWebPartStrings';
+import { MyClasses, IMyClassesProps } from './components/myClasses';
 import { MSGraphClient } from '@microsoft/sp-http';
 import { TeamsService, ITeamsService } from '../../shared/services';
 
-export interface IMyTeamsWebPartProps {
+export interface IMyClassesWebPartProps {
   openInClientApp: boolean;
 }
 
-export default class MyTeamsWebPart extends BaseClientSideWebPart<IMyTeamsWebPartProps> {
+export default class MyClassesWebPart extends BaseClientSideWebPart<IMyClassesWebPartProps> {
 
   private _graphClient: MSGraphClient;
   private _teamsService: ITeamsService;
@@ -34,8 +34,8 @@ export default class MyTeamsWebPart extends BaseClientSideWebPart<IMyTeamsWebPar
   }
 
   public async render(): Promise<void> {
-    const element: React.ReactElement<IMyTeamsProps> = React.createElement(
-      MyTeams,
+    const element: React.ReactElement<IMyClassesProps> = React.createElement(
+      MyClasses,
       {
         teamsService: this._teamsService,
         openInClientApp: this.properties.openInClientApp

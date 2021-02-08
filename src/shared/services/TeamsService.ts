@@ -1,5 +1,5 @@
 import { MSGraphClient } from "@microsoft/sp-http";
-import { ITeam, IChannel } from "../interfaces";
+import { ITeam, IChannel, IEducationClass } from "../interfaces";
 import { ITeamsService } from "./ITeamsService";
 
 export class TeamsService implements ITeamsService {
@@ -46,4 +46,18 @@ export class TeamsService implements ITeamsService {
     return channels;
   }
 
+  public GetClasses = async (): Promise<IEducationClass[]> => {
+    return await this._getClasses();
+  }
+
+  private _getClasses = async (): Promise<IEducationClass[]> => {
+    let classes: IEducationClass[] = [];
+    try {
+      const classesResponse = await this._graphClient.api('education/me/classes').version('v1.0').get();
+      classes = classesResponse.value as IEducationClass[];
+    } catch (error) {
+      console.log('Error getting classes', error);
+    }
+    return classes;
+  }
 }
